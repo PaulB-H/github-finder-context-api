@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
@@ -7,9 +7,8 @@ import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import axios from "axios";
-import "./App.css";
-
 import GithubState from "./context/github/GithubState";
+import "./App.css";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -17,23 +16,6 @@ const App = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
-
-  // Load initial users
-  // useEffect(() => {
-  //   setLoading(true);
-  //   async function fetchData() {
-  //     // You can await here
-  //     const res = await axios.get(`https://api.github.com/users`, {
-  //       headers: {
-  //         "User-Agent": "PaulB-H",
-  //         Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
-  //       },
-  //     });
-  //     setUsers(res.data);
-  //     setLoading(false);
-  //   }
-  //   fetchData();
-  // }, []);
 
   // Get a single Github user
   const getUser = async (username) => {
