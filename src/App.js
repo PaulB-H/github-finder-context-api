@@ -19,24 +19,21 @@ const App = () => {
   const [alert, setAlert] = useState(null);
 
   // Load initial users
-  useEffect(() => {
-    setLoading(true);
-    async function fetchData() {
-      // You can await here
-      const res = await axios.get(`https://api.github.com/users`, {
-        headers: {
-          "User-Agent": "PaulB-H",
-          Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
-        },
-      });
-      setUsers(res.data);
-      setLoading(false);
-      console.log("Hello Kenobi");
-    }
-    fetchData();
-  }, []);
-
-  // Search Github users
+  // useEffect(() => {
+  //   setLoading(true);
+  //   async function fetchData() {
+  //     // You can await here
+  //     const res = await axios.get(`https://api.github.com/users`, {
+  //       headers: {
+  //         "User-Agent": "PaulB-H",
+  //         Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+  //       },
+  //     });
+  //     setUsers(res.data);
+  //     setLoading(false);
+  //   }
+  //   fetchData();
+  // }, []);
 
   // Get a single Github user
   const getUser = async (username) => {
