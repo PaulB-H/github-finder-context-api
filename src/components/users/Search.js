@@ -62,8 +62,6 @@ const Search = ({ setAlert }) => {
 // ptfr - PropTypes function is required
 // ptbr - PropTypes boolean is required
 Search.propTypes = {
-  clearUsers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired,
 };
 
