@@ -11,29 +11,9 @@ import GithubState from "./context/github/GithubState";
 import "./App.css";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
-
-  // Get a single Github user
-  const getUser = async (username) => {
-    setLoading(true);
-
-    const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`,
-      {
-        headers: {
-          "User-Agent": "PaulB-H",
-          Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
-        },
-      }
-    );
-
-    setUser(res.data);
-    setLoading(false);
-  };
 
   // Get users repos
   const getUserRepos = async (username) => {
@@ -51,7 +31,6 @@ const App = () => {
   };
 
   // Set alert
-
   const showAlert = (msg, type) => {
     // Same as { msg: msg, type: type }
     setAlert({ msg, type });
@@ -82,14 +61,7 @@ const App = () => {
                 exact
                 path="/users/:login"
                 render={(props) => (
-                  <User
-                    {...props}
-                    getUser={getUser}
-                    getUserRepos={getUserRepos}
-                    user={user}
-                    repos={repos}
-                    loading={loading}
-                  />
+                  <User {...props} getUserRepos={getUserRepos} repos={repos} />
                 )}
               />
             </Switch>

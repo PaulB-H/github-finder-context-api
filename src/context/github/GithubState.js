@@ -62,7 +62,25 @@ const GithubState = (props) => {
     });
   };
 
-  // Get User
+  // Get a single Github user
+  const getUser = async (username) => {
+    setLoading();
+
+    const res = await axios.get(
+      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`,
+      {
+        headers: {
+          "User-Agent": "PaulB-H",
+          Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+        },
+      }
+    );
+
+    dispatch({
+      type: GET_USER,
+      payload: res.data,
+    });
+  };
 
   // Get Repos
 
