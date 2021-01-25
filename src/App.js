@@ -8,20 +8,11 @@ import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 
 import GithubState from "./context/github/GithubState";
-import AlertState from "./context/github/AlertState";
+import AlertState from "./context/alert/AlertState";
 
 import "./App.css";
 
 const App = () => {
-  const [alert, setAlert] = useState(null);
-
-  // Set alert
-  const showAlert = (msg, type) => {
-    // Same as { msg: msg, type: type }
-    setAlert({ msg, type });
-    setTimeout(() => setAlert(null), 5000);
-  };
-
   return (
     <GithubState>
       <AlertState>
@@ -29,14 +20,14 @@ const App = () => {
           <div className="App">
             <Navbar />
             <div className="container">
-              <Alert alert={alert} />
+              <Alert />
               <Switch>
                 <Route
                   // exact
                   path="/github-finder-func-comp"
                   render={(props) => (
                     <Fragment>
-                      <Search setAlert={showAlert} />
+                      <Search />
                       <Users />
                     </Fragment>
                   )}
