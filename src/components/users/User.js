@@ -4,16 +4,19 @@ import Repos from "../repos/Repos";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import GithubContext from "../../context/github/githubContext";
+import githubContext from "../../context/github/githubContext";
 
 // The reason was a class is we used a componentDidMount lifecycle method
 // Replacement is the useEffect hook
 
-const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
+const User = ({ getUserRepos, repos, match }) => {
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
     // eslint-disable-next-line
   }, []);
+
+  const { getUser, loading, user } = githubContext;
 
   const {
     name,
