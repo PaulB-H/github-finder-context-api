@@ -107,10 +107,7 @@ const User = ({ getUserRepos, repos, match }) => {
 };
 
 User.propTypes = {
-  loading: PropTypes.bool, // ptb
-  user: PropTypes.object.isRequired, // ptor
   repos: PropTypes.array.isRequired, // ptar
-  getUser: PropTypes.func.isRequired, // ptfr
   getUserRepos: PropTypes.func.isRequired,
 };
 

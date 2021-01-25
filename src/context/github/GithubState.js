@@ -82,7 +82,22 @@ const GithubState = (props) => {
     });
   };
 
-  // Get Repos
+  // Get user repos
+  const getUserRepos = async (username) => {
+    setLoading();
+
+    const res = await axios.get(`https://api.github.com/users/${username}`, {
+      headers: {
+        "User-Agent": "PaulB-H",
+        Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+      },
+    });
+
+    dispatch({
+      type: GET_REPOS,
+      payload: res.data,
+    });
+  };
 
   // Clear Users
   const clearUsers = () => dispatch({ type: CLEAR_USERS });
@@ -99,6 +114,8 @@ const GithubState = (props) => {
         loading: state.loading,
         searchUsers,
         clearUsers,
+        getUser,
+        getUserRepos,
       }}
     >
       {props.children}

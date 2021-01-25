@@ -15,21 +15,6 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
-  // Get users repos
-  const getUserRepos = async (username) => {
-    setLoading(true);
-
-    const res = await axios.get(`https://api.github.com/users/${username}`, {
-      headers: {
-        "User-Agent": "PaulB-H",
-        Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
-      },
-    });
-
-    setRepos(res.data);
-    setLoading(false);
-  };
-
   // Set alert
   const showAlert = (msg, type) => {
     // Same as { msg: msg, type: type }
@@ -57,13 +42,7 @@ const App = () => {
               />
               {/* When you pass in a component to a route like below you cannot pass in props */}
               <Route exact path="/about" component={About} />
-              <Route
-                exact
-                path="/users/:login"
-                render={(props) => (
-                  <User {...props} getUserRepos={getUserRepos} repos={repos} />
-                )}
-              />
+              <Route exact path="/users/:login" component={user} />
             </Switch>
           </div>
         </div>
