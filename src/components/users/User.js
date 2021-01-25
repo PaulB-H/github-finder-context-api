@@ -4,19 +4,20 @@ import Repos from "../repos/Repos";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import GithubContext from "../../context/github/githubContext";
-import githubContext from "../../context/github/githubContext";
 
 // The reason was a class is we used a componentDidMount lifecycle method
 // Replacement is the useEffect hook
 
 const User = ({ getUserRepos, repos, match }) => {
+  const githubContext = useContext(GithubContext);
+
+  const { getUser, loading, user } = githubContext;
+
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
     // eslint-disable-next-line
   }, []);
-
-  const { getUser, loading, user } = githubContext;
 
   const {
     name,
@@ -33,6 +34,7 @@ const User = ({ getUserRepos, repos, match }) => {
     public_gists,
     hireable,
   } = user;
+  // All of these properties for user are pulled from github Context now NOT props
 
   if (loading) return <Spinner />;
 
