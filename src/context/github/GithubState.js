@@ -66,15 +66,12 @@ const GithubState = (props) => {
   const getUser = async (username) => {
     setLoading();
 
-    const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`,
-      {
-        headers: {
-          "User-Agent": "PaulB-H",
-          Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
-        },
-      }
-    );
+    const res = await axios.get(`https://api.github.com/users/${username}`, {
+      headers: {
+        "User-Agent": "PaulB-H",
+        Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+      },
+    });
 
     dispatch({
       type: GET_USER,
@@ -86,12 +83,15 @@ const GithubState = (props) => {
   const getUserRepos = async (username) => {
     setLoading();
 
-    const res = await axios.get(`https://api.github.com/users/${username}`, {
-      headers: {
-        "User-Agent": "PaulB-H",
-        Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
-      },
-    });
+    const res = await axios.get(
+      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`,
+      {
+        headers: {
+          "User-Agent": "PaulB-H",
+          Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+        },
+      }
+    );
 
     dispatch({
       type: GET_REPOS,
