@@ -23,7 +23,6 @@ const App = () => {
               <Alert />
               <Switch>
                 <Route exact path="/" component={Home} />
-                {/* When you pass in a component to a route like below you cannot pass in props */}
                 <Route exact path="/about" component={About} />
                 <Route exact path="/users/:login" component={User} />
                 <Route component={NotFound} />
