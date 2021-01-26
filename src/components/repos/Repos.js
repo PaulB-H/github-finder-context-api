@@ -6,7 +6,6 @@ const Repos = ({ repos }) => {
   return repos.map((repo) => <RepoItem repo={repo} key={repo.id} />);
 };
 
-// ptar
 Repos.propTypes = {
   repos: PropTypes.array.isRequired,
 };

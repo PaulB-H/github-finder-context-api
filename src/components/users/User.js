@@ -4,9 +4,6 @@ import Repos from "../repos/Repos";
 import { Link } from "react-router-dom";
 import GithubContext from "../../context/github/githubContext";
 
-// The reason was a class is we used a componentDidMount lifecycle method
-// Replacement is the useEffect hook
-
 const User = ({ match }) => {
   const githubContext = useContext(GithubContext);
 

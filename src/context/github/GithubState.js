@@ -23,16 +23,14 @@ const GithubState = (props) => {
   // Load initial users
   useEffect(() => {
     setLoading();
+
     async function fetchData() {
-      // You can await here
       const res = await axios.get(`https://api.github.com/users`, {
         headers: {
           "User-Agent": "PaulB-H",
           Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
         },
       });
-      // setUsers(res.data);
-      // setLoading(false);
 
       dispatch({
         type: SEARCH_USERS,
@@ -79,7 +77,7 @@ const GithubState = (props) => {
     });
   };
 
-  // Get user repos
+  // Get a user's repos
   const getUserRepos = async (username) => {
     setLoading();
 

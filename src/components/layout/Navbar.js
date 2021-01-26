@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-// We use Link below because this is not the default export from react-router-dom
 import { Link } from "react-router-dom";
 
 const Navbar = ({ icon, title }) => {
