@@ -22,7 +22,7 @@ const App = () => {
             <div className="container">
               <Alert />
               <Switch>
-                <Route exact path="/github-finder-func-comp" component={Home} />
+                <Route exact path="/" component={Home} />
                 {/* When you pass in a component to a route like below you cannot pass in props */}
                 <Route exact path="/about" component={About} />
                 <Route exact path="/users/:login" component={User} />
