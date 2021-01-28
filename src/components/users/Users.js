@@ -10,6 +10,8 @@ const Users = () => {
 
   if (loading) {
     return <Spinner />;
+  } else if (users.length === 0) {
+    return <h1>No users found!</h1>;
   } else {
     return (
       <div style={userStyle}>
