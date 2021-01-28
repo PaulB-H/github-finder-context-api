@@ -36,7 +36,7 @@ const GithubState = (props) => {
       const res = await axios.get(`https://api.github.com/users`, {
         headers: {
           "User-Agent": "PaulB-H",
-          Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+          Authorization: "token " + githubOathToken,
         },
       });
 
@@ -57,7 +57,7 @@ const GithubState = (props) => {
       {
         headers: {
           "User-Agent": "PaulB-H",
-          Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+          Authorization: "token " + githubOathToken,
         },
       }
     );
@@ -75,7 +75,7 @@ const GithubState = (props) => {
     const res = await axios.get(`https://api.github.com/users/${username}`, {
       headers: {
         "User-Agent": "PaulB-H",
-        Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+        Authorization: "token " + githubOathToken,
       },
     });
 
@@ -94,7 +94,7 @@ const GithubState = (props) => {
       {
         headers: {
           "User-Agent": "PaulB-H",
-          Authorization: "token " + process.env.REACT_APP_GITHUB_OATH_TOKEN,
+          Authorization: "token " + githubOathToken,
         },
       }
     );
