@@ -10,13 +10,13 @@ import {
   GET_REPOS,
 } from "../types";
 
-let githubOathToken;
+let githubOathToken = process.env.REACT_APP_GITHUB_OATH_TOKEN;
 
-if (process.env.NODE_ENV !== "production") {
-  githubOathToken = process.env.REACT_APP_GITHUB_OATH_TOKEN;
-} else {
-  githubOathToken = process.env.GITHUB_OATH_TOKEN;
-}
+// if (process.env.NODE_ENV !== "production") {
+//   githubOathToken = process.env.REACT_APP_GITHUB_OATH_TOKEN;
+// } else {
+//   githubOathToken = process.env.REACT_APP_GITHUB_OATH_TOKEN;
+// }
 
 const GithubState = (props) => {
   const initialState = {
@@ -36,7 +36,7 @@ const GithubState = (props) => {
       const res = await axios.get(`https://api.github.com/users`, {
         headers: {
           "User-Agent": "PaulB-H",
-          Authorization: "token " + githubOathToken,
+          Authorization: `token ${githubOathToken}`,
         },
       });
 
@@ -57,7 +57,7 @@ const GithubState = (props) => {
       {
         headers: {
           "User-Agent": "PaulB-H",
-          Authorization: "token " + githubOathToken,
+          Authorization: `token ${githubOathToken}`,
         },
       }
     );
@@ -75,7 +75,7 @@ const GithubState = (props) => {
     const res = await axios.get(`https://api.github.com/users/${username}`, {
       headers: {
         "User-Agent": "PaulB-H",
-        Authorization: "token " + githubOathToken,
+        Authorization: `token ${githubOathToken}`,
       },
     });
 
@@ -94,7 +94,7 @@ const GithubState = (props) => {
       {
         headers: {
           "User-Agent": "PaulB-H",
-          Authorization: "token " + githubOathToken,
+          Authorization: `token ${githubOathToken}`,
         },
       }
     );
