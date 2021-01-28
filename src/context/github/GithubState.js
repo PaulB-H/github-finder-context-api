@@ -10,6 +10,14 @@ import {
   GET_REPOS,
 } from "../types";
 
+let githubOathToken;
+
+if (process.env.NODE_ENV !== "production") {
+  githubOathToken = process.env.REACT_APP_GITHUB_OATH_TOKEN;
+} else {
+  githubOathToken = process.env.GITHUB_OATH_TOKEN;
+}
+
 const GithubState = (props) => {
   const initialState = {
     users: [],
