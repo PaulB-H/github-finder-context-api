@@ -26,16 +26,6 @@ const About = () => {
       <hr />
       <br />
       <p>
-        See the live site:{" "}
-        <a
-          rel="noreferrer"
-          href="https://github-finder-paulbh.netlify.app/"
-          target="_blank"
-        >
-          Live Site
-        </a>
-      </p>
-      <p>
         Find the course here:{" "}
         <a
           rel="noreferrer"
